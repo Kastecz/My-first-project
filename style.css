@@ -1,10 +1,38 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5c68f;
-    padding: 20px;
+    background-color:black;
 }
 .banner {
-      width: 100%;
-      height: auto;
-      display: block;
+    position: fixed;
+    width: 100% ;
+    height: auto;
+    filter: brightness(150%);
+    filter: blur(6px);
+    z-index: -1;
     }
+
+.square {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    max-width: auto;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    z-index: 50;
+}
+.title {
+    font-size: 40px;
+}
+.subtext {
+    font-size: 10px;
+    text-align: left;
+}
+.button-homepage {
+    position: absolute;
+    background-color: rgba(231, 151, 151, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 30;
+    margin-left: 90%;
+}
