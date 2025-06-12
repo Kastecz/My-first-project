@@ -1,0 +1,10 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5c68f;
+    padding: 20px;
+}
+.banner {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
