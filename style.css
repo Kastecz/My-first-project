@@ -3,36 +3,92 @@ body {
     background-color:black;
 }
 .banner {
-    position: fixed;
+    position: absolute;
     width: 100% ;
     height: auto;
     filter: brightness(150%);
-    filter: blur(6px);
+    filter: blur(10px);
     z-index: -1;
     }
 
 .square {
-    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
     background-color: rgba(255, 255, 255, 0.8);
-    max-width: auto;
-    padding: 40px;
+    max-width: 70%;
+    margin: auto;
+    padding: 20px;
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 0 20px rgba(0,0,0,0.2);
     z-index: 50;
 }
 .title {
+    flex: auto;
     font-size: 40px;
 }
+/*  Podstrony z potrawami */
+
 .subtext {
-    font-size: 10px;
+    flex: auto;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 15px;
     text-align: left;
 }
+
+.td {
+    text-align: right;
+}
+
+.tab{
+    margin-left: auto;
+    flex: 50%;
+}
+.mealforo {
+    height:fit-content ;
+}
+
 .button-homepage {
-    position: absolute;
-    background-color: rgba(231, 151, 151, 0.8);
+    position: relative;
+    background-color: rgba(255, 246, 246, 0.8);
     padding: 20px;
     border-radius: 10px;
     z-index: 30;
-    margin-left: 90%;
+    margin-left: 95%;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.excel-table {
+    border-collapse: collapse;
+    min-width: 300px;
+}
+
+.excel-table td {
+    padding: 8px 12px;
+}
+
+.ingredients-title {
+    text-align: center;
+    font-size: 24px;
+    margin: 20px 0 10px;
+}
+
+#steps-list {
+    margin-left: 20px;
+}
+
+#output {
+    text-align: center;
+}
+
+ol#steps-list {
+    display: inline-block;
+    text-align: left;
 }
