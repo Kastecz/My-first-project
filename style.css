@@ -38,16 +38,13 @@ body {
     text-align: left;
 }
 
-.td {
-    text-align: right;
-}
-
 .tab{
     margin-left: auto;
     flex: 50%;
 }
-.mealforo {
-    max-height: max-content ;
+.mealfoto {
+    height: 700px ;
+    max-width: 500px;
 }
 
 .button-homepage {
@@ -97,7 +94,7 @@ ol#steps-list {
 
 .menu-image {
     border: 3px solid black;
-    max-width: 150px;
-    max-height: 150px;
+    width: 150px;
+    height: 150px;
     flex: auto;
 }
