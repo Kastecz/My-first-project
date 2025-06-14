@@ -1,123 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Przepisy na jedzonko</title>
+  <meta charset="UTF-8" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Przepisy na jedzonko</title>
+
 </head>
 <body>
-  <img src="images\ChatGPT Image 13 cze 2025, 22_31_54.png" class="banner">
+  <img src="images/ChatGPT Image 13 cze 2025, 22_31_54.png" class="banner">
   <a href="index.html"><button class="button-homepage">Back</button></a>
 
-<div class="square">
-  <div class="title">
-    <!-- nazwa portawy -->
-    <H1> Chicken fajita rice </H1>
+  <div class="square">
+    <div class="title">
+        <!-- nazwa potrawy -->
+      <h1>Chicken fajita rice</h1>
+    </div>
+    <div id="output" class="tab"></div>
+<!-- zdjecie potrawy -->
+    <img src="images/fajita.png" class="mealfoto"> 
   </div>
-  <div class="subtext">
-  <table class="tab">
-    <!-- tabela składnikow-->
-  <tr><td><h1>Składniki:</h1></td></tr>
-  <tr>
-    <td class = "quantity">400g</td>
-    <td> - </td>
-    <td>chicken mini fillets</td>
-  </tr>
-  <tr>
-    <td class = "quantity">1 tsp</td>
-    <td> - </td>
-    <td>paprika</td>
-  </tr>
-  <tr>
-    <td class = "quantity">1tsp</td>
-    <td> - </td>
-    <td>garlic granules</td>
-  </tr>
-  <tr>
-    <td class = "quantity">1/2 tsp</td>
-    <td> - </td>
-    <td>onion granules</td>
-  </tr>
-  <tr>
-    <td class = "quantity"></td>
-    <td> - </td>
-    <td>pepper to taste</td>
-  </tr>
-  <tr>
-    <td class = "quantity">1/2 tbsp </td>
-    <td> - </td>
-    <td>extra virgin olive oil</td>
-  </tr>
-  <tr><td> - </td></tr>
-  <tr>
-    <td class = "quantity">320g</td>
-    <td>-</td>
-    <td>cooked white rice</td>
-  </tr>
-  <tr>
-    <td class = "quantity">1</td>
-    <td>-</td>
-    <td>red onion, chopped</td>
-  </tr>
-  <tr>
-    <td class = "quantity">1/2 </td>
-    <td>-</td>
-    <td>red bell pepper, chopped</td>
-  </tr>
-  <tr>
-    <td class = "quantity">1</td>
-    <td>-</td>
-    <td>medium courgette, chopped</td>
-  </tr>
-  <tr>
-    <td class = "quantity">2</td>
-    <td>-</td>
-    <td>tomatoes, peeled and chopped</td>
-  </tr>
-  <tr>
-    <td class = "quantity">25g</td>
-    <td>-</td>
-    <td>old El Paso roasted tomato and pepper fajita seasoning mix</td>
-  </tr>
-  <tr>
-    <td class = "quantity">1 1/2 tbsp</td>
-    <td>-</td>
-    <td>tomato purée</td>
-  </tr>
-  <tr>
-    <td class = "quantity">60ml</td>
-    <td>-</td>
-    <td>water</td>
-  </tr>
-  <tr>
-    <td class = "quantity">60g</td>
-    <td>-</td>
-    <td>grated cheddar and mozzarella cheese mix</td>
-  </tr>
-  <tr>
-    <td class = "quantity">1 tbsp</td>
-    <td>-</td>
-    <td>hopped chives</td>
-  </tr>
-  <tr>
-    <td class = "quantity">1/2 tbsp</td>
-    <td>-</td>
-    <td>mayonnaise</td>
-  </tr>
-  <tr>
-    <td class = "quantity">1 tbsp</td>
-    <td>-</td>
-    <td>sriracha sauce</td>
-  </tr>
 
-</table> <!-- zdjecie potrawy-->
- <img src="images\fajita.png" class="mealfoto">
-  </div>
-</div>
+  <script>
+    const sheetConfigs = [
+      {
+        name: 'Arkusz2',
+        range: 'D9:E50' // składniki
+      }
+    ];
 
-  <footer>
+    function loadExcel() {
+      fetch('excel_food/Jedzenie.xlsx')
+        .then(response => {
+          if (!response.ok) throw new Error('Nie można pobrać pliku Excel.');
+          return response.arrayBuffer();
+        })
+        .then(data => {
+          const workbook = XLSX.read(data, { type: 'array' });
+          const sheet = workbook.Sheets['Arkusz2'];
+          const output = document.getElementById('output');
+          output.innerHTML = '';
 
-  </footer>
+          // 🔹 Nagłówek składników
+          const header = document.createElement('h2');
+          header.textContent = 'Składniki';
+          header.className = 'ingredients-title';
+          output.appendChild(header);
+
+          // 🔹 Kontener do wyśrodkowania tabeli
+          const centerDiv = document.createElement('div');
+          centerDiv.className = 'centered';
+
+          sheetConfigs.forEach(config => {
+            const range = XLSX.utils.decode_range(config.range);
+            const table = document.createElement('table');
+            table.className = 'excel-table';
+
+            for (let row = range.s.r; row <= range.e.r; row++) {
+              let rowHasData = false;
+              for (let col = range.s.c; col <= range.e.c; col++) {
+                const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });
+                const cell = sheet[cellAddress];
+                if (cell && cell.v !== '') rowHasData = true;
+              }
+              if (!rowHasData) continue;
+
+              const tr = table.insertRow();
+              for (let col = range.s.c; col <= range.e.c; col++) {
+                const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });
+                const cell = sheet[cellAddress];
+                const td = tr.insertCell();
+                td.textContent = cell ? cell.v : '';
+              }
+            }
+
+            centerDiv.appendChild(table);
+          });
+
+          output.appendChild(centerDiv);
+
+          // 🔹 Przygotowanie (G7:G20)
+          const descriptionRange = XLSX.utils.decode_range('G7:G20');
+          const stepsContainer = document.createElement('div');
+          stepsContainer.innerHTML = '<h2>Przygotowanie:</h2><ol id="steps-list"></ol>';
+          const stepsList = stepsContainer.querySelector('#steps-list');
+
+          for (let row = descriptionRange.s.r; row <= descriptionRange.e.r; row++) {
+            const addr = XLSX.utils.encode_cell({ r: row, c: 6 }); // kolumna G = index 6
+            const cell = sheet[addr];
+            if (cell && cell.v) {
+              const li = document.createElement('li');
+              li.textContent = cell.v;
+              stepsList.appendChild(li);
+            }
+          }
+
+          output.appendChild(stepsContainer);
+
+          // 🔹 Link do przepisu (E2)
+          const linkCell = sheet['E2'];
+          if (linkCell && linkCell.v) {
+            const linkDiv = document.createElement('div');
+            linkDiv.innerHTML = `<p><strong>Źródło:</strong> <a href="${linkCell.v}" target="_blank">${linkCell.v}</a></p>`;
+            output.appendChild(linkDiv);
+          }
+        })
+        .catch(err => {
+          document.getElementById('output').innerText = 'Błąd: ' + err.message;
+        });
+    }
+
+    window.onload = loadExcel;
+  </script>
 </body>
 </html>

@@ -15,17 +15,17 @@
   <div class="square">
     <div class="title">
         <!-- nazwa potrawy -->
-      <h1>Chicken fajita rice</h1>
+      <h1>CREAMY BEEF PASTA</h1>
     </div>
     <div id="output" class="tab"></div>
 <!-- zdjecie potrawy -->
-    <img src="images/fajita.png" class="mealfoto"> 
+    <img src="images\creamy beef pasta.png" class="mealfoto"> 
   </div>
 
   <script>
     const sheetConfigs = [
       {
-        name: 'Arkusz2',
+        name: 'Arkusz3',
         range: 'D9:E50' // składniki
       }
     ];
@@ -38,7 +38,7 @@
         })
         .then(data => {
           const workbook = XLSX.read(data, { type: 'array' });
-          const sheet = workbook.Sheets['Arkusz2'];
+          const sheet = workbook.Sheets['Arkusz3'];
           const output = document.getElementById('output');
           output.innerHTML = '';
 
