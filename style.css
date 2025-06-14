@@ -47,7 +47,7 @@ body {
     flex: 50%;
 }
 .mealforo {
-    height:60% ;
+    max-height: max-content ;
 }
 
 .button-homepage {
@@ -93,4 +93,11 @@ body {
 ol#steps-list {
     display: inline-block;
     text-align: left;
+}
+
+.menu-image {
+    border: 3px solid black;
+    max-width: 150px;
+    max-height: 150px;
+    flex: auto;
 }
