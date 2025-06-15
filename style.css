@@ -21,7 +21,6 @@ body {
 
     font-size: 40px;
 }
-/*  Podstrony z potrawami */
 
 .subtext {
     display: flex;
@@ -30,13 +29,6 @@ body {
     font-size: 15px;
     gap: 20px;
     justify-content: center;
-}
-
-
-.mealfoto {
-    height: 700px ;
-    max-width: 500px;
-    flex: auto;
 }
 
 .button-homepage {
@@ -50,7 +42,7 @@ body {
 
 .centered {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     margin-bottom: 20px;
 }
 
@@ -148,4 +140,10 @@ ol#steps-list {
 }
 .tab{
     align-content:flex-start;
+}
+
+.mealfoto {
+    height: 700px ;
+    max-width: 500px;
+    justify-content: right;
 }
