@@ -18,7 +18,7 @@ body {
     z-index: 50;
 }
 .title {
-    flex:auto;
+
     font-size: 40px;
 }
 /*  Podstrony z potrawami */
@@ -27,16 +27,12 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    flex-flow: column;
     font-size: 15px;
     gap: 20px;
     justify-content: center;
 }
 
-.tab{
-    margin-left: auto;
-    flex: 50%;
-}
+
 .mealfoto {
     height: 700px ;
     max-width: 500px;
@@ -143,4 +139,13 @@ ol#steps-list {
 .card-face.back a {
   color: #fff;
   text-decoration: none;
+}
+
+.meal-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.tab{
+    align-content:flex-start;
 }
