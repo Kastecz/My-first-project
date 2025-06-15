@@ -1,15 +1,8 @@
 body {
     font-family: Arial, sans-serif;
-    background-color:black;
+    background-image: url("images/ChatGPT Image 13 cze 2025, 22_31_54.png");
+    background-size: auto;
 }
-.banner {
-    position: absolute;
-    width: 100% ;
-    height: auto;
-    filter: brightness(150%);
-    filter: blur(10px);
-    z-index: -1;
-    }
 
 .square {
     display: flex;
@@ -40,7 +33,7 @@ body {
 
 .tab{
     margin-left: auto;
-    flex: 50%;
+    flex: 40%;
 }
 .mealfoto {
     height: 700px ;
@@ -53,7 +46,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     z-index: 30;
-    margin-left: 5%;
+    margin-left: 3%;
 }
 
 .centered {
