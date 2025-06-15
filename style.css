@@ -26,6 +26,8 @@ body {
 .subtext {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
+    flex-flow: column;
     font-size: 15px;
     gap: 20px;
     justify-content: center;
@@ -33,12 +35,12 @@ body {
 
 .tab{
     margin-left: auto;
-    flex: 55%;
+    flex: 50%;
 }
 .mealfoto {
     height: 700px ;
     max-width: 500px;
-    flex: 50%;
+    flex: auto;
 }
 
 .button-homepage {
