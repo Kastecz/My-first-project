@@ -136,7 +136,6 @@ ol#steps-list {
 .meal-container {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
 }
 .tab{
     align-content:flex-start;
@@ -145,5 +144,4 @@ ol#steps-list {
 .mealfoto {
     height: 700px ;
     max-width: 500px;
-    justify-content: right;
 }
